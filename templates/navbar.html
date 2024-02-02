@@ -1,0 +1,48 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}"><img id = 'logo' src = "/static/images/logo.png" height= 55 width = 80 class = 'left' /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline d-flex " method="GET" action="{% url 'search' %}">
+            <input class="form-control" type="search" name="q" placeholder="Search" aria-label="Search"
+                value="{{ request.GET.q }}">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+{% comment %} 
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'upload' %}">Upload Video</a>
+            </li> {% endcomment %}
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'category' %}">Upload</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'signout' %}">Sign Out</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}"> {{ user.username }} 
+                </a>
+            </li>
+            
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'signin' %}">Sign In</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <legend class="border-bottom mb-4">Add a Category For Your Video</legend>
+                {{ form | crispy }}
+                <button class="btn btn-outline-info btn-block mt-3" type="submit">Submit</button>
+            </form>
+			<div>
+				<p class="mt-4 mb-0 text-secondary text-center font-weight-bold"> Skip this to upload video </p>
+				<a href="{% url 'upload' %}" class="btn btn-outline-secondary btn-block">Skip</a>
+			</div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
