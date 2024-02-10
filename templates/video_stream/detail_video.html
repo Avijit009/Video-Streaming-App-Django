@@ -87,7 +87,7 @@
                         <div class="position-relative d-flex flex-row mb-5 py-2 border-bottom">
                             <img src="{{ category.thumbnail.url }}" width="100" height="50" />
                             <h5 class="pl-3">{{ category.title }}</h5>
-                            <a href="{% url 'video-detail' category.pk %}" class="stretched-link"></a>
+                            <a href="{% url 'video_detail' category.pk %}" class="stretched-link"></a>
                         </div>
                     {% endif %}
                 {% endfor %}
